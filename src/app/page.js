@@ -2,7 +2,8 @@
 export default function Home() {
   return (
     <>
-      hello next js
+      <h2>welcome</h2>
+      hello web
     </>  
   )
 }
