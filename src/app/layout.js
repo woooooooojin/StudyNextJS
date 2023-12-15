@@ -1,7 +1,7 @@
-// "use client";
 
 import Link from 'next/link'
 import './globals.css'
+import { Controll } from './Controll'
 
 
 export const metadata = {
@@ -28,11 +28,8 @@ export default async function RootLayout({ children }) {
           }
         </ol>
         {children}
-        <ul>
-          <li><Link href='/create'>create</Link></li>
-          <li><Link href='/update/1'>update</Link></li>
-          <li><input type='button' value='delete'></input></li>
-        </ul>
+        <Controll/>
+        
         </body>
     </html>
   )
