@@ -1,3 +1,5 @@
+// "use client";
+
 import Link from 'next/link'
 import './globals.css'
 
@@ -7,14 +9,23 @@ export const metadata = {
   description: 'study next.js',
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+      
+  //서버에서 데이터를 가져옴
+  const resp = await  fetch('http://localhost:9999/topics',{ cache : 'no-cache' }) //revalidate : 0 
+  const topics = await resp.json()
+
+
   return (
     <html lang='ko'>
       <body>
         <h1><Link href='/'>web</Link></h1>
         <ol>
-          <li><Link href='/read/1'>html</Link></li>
-          <li><Link href='/read/2'>css</Link></li>
+          {
+            topics.map((topic)=>{
+              return <li key={topic.id}><Link href={`/read/${topic.id}`}>{topic.title}</Link></li>
+            })
+          }
         </ol>
         {children}
         <ul>
