@@ -16,7 +16,7 @@ export function Controll() {
 
         const option = {method : 'DELETE'}
 
-        fetch('http://localhost:9999/topics/'+id, option)
+        fetch(process.env.NEXT_PUBLIC_API_URL+'topics/'+id, option)
         .then(resp=>resp.json())
         .then(restut=>{
           router.push('/')

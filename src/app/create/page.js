@@ -16,13 +16,13 @@ export default function Create() {
         },
         body:JSON.stringify({title, body})
       }
-      fetch(`http://localhost:9999/topics`, option)
+      fetch(process.env.NEXT_PUBLIC_API_URL+`topics`, option)
       .then(res=>res.json())
       .then(result=>{
         console.log(result)
         const lastid = result.id
-        router.refresh() //새로고침 , 데이터를 가져와서 데이터를 뿌려주게됨
         router.push(`/read/${lastid}`)
+        router.refresh() //새로고침 , 데이터를 가져와서 데이터를 뿌려주게됨
       })
 
     }}>

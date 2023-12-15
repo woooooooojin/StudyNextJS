@@ -12,7 +12,7 @@ export default function Update() {
   const params = useParams()
   const id = params.id
   useEffect(()=>{
-    fetch('http://localhost:9999/topics/'+id)
+    fetch(process.env.NEXT_PUBLIC_API_URL+'topics/'+id)
     .then(res=>res.json())
     .then(result=>{
         setTitle(result.title)
@@ -33,7 +33,7 @@ export default function Update() {
         },
         body:JSON.stringify({title, body})
       }
-      fetch(`http://localhost:9999/topics/`+id, option)
+      fetch(process.env.NEXT_PUBLIC_API_URL+`topics/`+id, option)
       .then(res=>res.json())
       .then(result=>{
         console.log(result)

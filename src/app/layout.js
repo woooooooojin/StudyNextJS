@@ -12,7 +12,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
       
   //서버에서 데이터를 가져옴
-  const resp = await  fetch('http://localhost:9999/topics',{ cache : 'no-cache' }) //revalidate : 0 
+  const resp = await  fetch(process.env.NEXT_PUBLIC_API_URL+'topics',{ cache : 'no-cache' }) //revalidate : 0 
   const topics = await resp.json()
 
 
